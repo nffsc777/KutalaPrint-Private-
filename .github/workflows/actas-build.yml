@@ -1,0 +1,40 @@
+name: Build PDFs from Markdown (Actas)
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'docs/actas/**/*.md'
+      - '!docs/actas/**/README.md'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Instalar Pandoc e TeX Live
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pandoc texlive-latex-recommended texlive-fonts-recommended texlive-latex-extra texlive-lang-portuguese fonts-noto fonts-noto-extra
+
+      - name: Converter Markdown para PDF e DOCX
+        run: |
+          shopt -s globstar nullglob
+          for f in docs/actas/**/*.md; do
+            [ "$(basename "$f")" = "README.md" ] && continue
+            base="${f%.md}"
+            pandoc "$f" -o "${base}.pdf" --pdf-engine=xelatex -V mainfont="Noto Serif" -V monofont="Noto Sans Mono" -V geometry:margin=2.5cm --from markdown+tex_math_single_backslash+raw_attribute --table-of-contents --toc-depth=3 --metadata=title:"$(basename "$f" .md)"
+            pandoc "$f" -o "${base}.docx" --from markdown --toc --toc-depth=3
+          done
+
+      - name: Commit automático dos ficheiros gerados
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: 'docs: gerar PDF/DOCX a partir de Markdown (Actas)'
+          branch: main
+          file_pattern: docs/actas/**/*.pdf docs/actas/**/*.docx
