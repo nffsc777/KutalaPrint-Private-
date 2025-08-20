@@ -1,0 +1,26 @@
+{
+  "name": "@kp/monorepo",
+  "version": "1.0.0",
+  "description": "Estado: bootstrap inicial.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "dev": "concurrently -k -n web,admin,api \"pnpm --filter @kp/web dev\" \"pnpm --filter @kp/admin dev\" \"pnpm --filter @kp/api start:dev\"",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "build": "pnpm -r build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^9.2.0",
+    "eslint": "^9.33.0",
+    "prettier": "^3.6.2",
+    "turbo": "^2.5.6",
+    "typescript": "^5.9.2"
+  },
+  "private": true
+}
