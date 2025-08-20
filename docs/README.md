@@ -1,14 +1,19 @@
-# Documentação Institucional — Kutala Print
+Documentação Institucional — Kutala Print
 
 Este directório contém a documentação jurídica e deliberativa da sociedade.
 
 ## Índice
 
-- [Estatuto](./estatuto/ESTATUTO_KutalaPrint.pdf)
+- Estatuto:
+  - [Versão PDF (final)](./estatuto/ESTATUTO_KutalaPrint.pdf)
+
 - Livro de Actas:
-  - [Acta 001 — 22.07.2025](./actas/KP_ACTA_2025_001.pdf)
-  - [Acta 002 — 05.08.2025](./actas/KP_ACTA_2025_002.pdf)
-  - Acta 003 — [PDF oficial](./actas/KP_ACTA_2025_003.pdf) | [Markdown](./actas/KP_ACTA_2025_003.md)
+  - Acta 001 — 22.07.2025  
+    [Markdown](./actas/KP_ACTA_2025_001.md) | [PDF](./outputs/KP_ACTA_2025_001.pdf)
+  - Acta 002 — 05.08.2025  
+    [Markdown](./actas/KP_ACTA_2025_002.md) | [PDF](./outputs/KP_ACTA_2025_002.pdf)
+  - Acta 003 — [Data da Reunião]  
+    [Markdown](./actas/KP_ACTA_2025_003.md) | [PDF](./outputs/KP_ACTA_2025_003.pdf)
 
 ## Notas de Organização
 - Os ficheiros **PDF** representam versões finais e assinadas.
