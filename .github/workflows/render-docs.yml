@@ -1,0 +1,42 @@
+name: Render Docs (Markdown → PDF/DOCX)
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "docs/**/*.md"
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    container: pandoc/latex:latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Render all Markdown in docs/** to PDF and DOCX
+        run: |
+          set -euo pipefail
+          mkdir -p output/pdf output/docx
+          shopt -s globstar nullglob
+          for f in docs/**/*.md; do
+            base="$(basename "${f%.md}")"
+            pandoc "$f" \
+              --from=gfm \
+              --pdf-engine=xelatex \
+              -V geometry:margin=2.5cm \
+              -V mainfont="DejaVu Serif" \
+              -o "output/pdf/${base}.pdf"
+            pandoc "$f" \
+              --from=gfm \
+              -o "output/docx/${base}.docx"
+          done
+
+      - name: Upload artifacts (PDF & DOCX)
+        uses: actions/upload-artifact@v4
+        with:
+          name: rendered-docs
+          path: |
+            output/pdf
+            output/docx
+          if-no-files-found: warn
