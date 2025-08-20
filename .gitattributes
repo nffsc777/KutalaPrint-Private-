@@ -1,0 +1,14 @@
+* text=auto eol=lf
+*.md text
+*.ts text
+*.tsx text
+*.js text
+*.json text
+*.yml text
+*.yaml text
+*.css text
+*.scss text
+*.svg text
+*.pdf binary
+*.docx binary
+docs/outputs/* binary

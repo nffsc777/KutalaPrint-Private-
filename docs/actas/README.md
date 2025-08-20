@@ -54,3 +54,6 @@ Este directório contém todas as actas oficiais da sociedade **Kutala Print —
 
 ---
 ✍️ **Regra de Ouro:** *A minuta é temporária, a Acta em `.md` é oficial, e os outputs em `.pdf`/`.docx` são os formatos de circulação.*
+
+## Estado — Conversão Automática
+![MD to PDF & DOCX](https://github.com/nffsc777/KutalaPrint-Private-/actions/workflows/md-to-docs.yml/badge.svg)
