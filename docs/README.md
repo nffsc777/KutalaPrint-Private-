@@ -19,3 +19,5 @@ Este directório contém a documentação jurídica e deliberativa da sociedade.
 - Os ficheiros **PDF** representam versões finais e assinadas.
 - As minutas em **Markdown** são rascunhos para aprovação e posterior exportação para PDF/Word.
 - Todas as alterações devem ser feitas via Pull Request, preservando o histórico.
+
+- [Livro de Actas — índice](./actas/README.md)
